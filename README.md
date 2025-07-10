@@ -1,8 +1,31 @@
-# Emergence CLI
+# Emergence CLI
 
-Command-line companion for the Emergence multi-agent network.
+Command‑line companion for the **Emergence** multi‑agent network.
 
-## Quick start
+[![CI](https://github.com/<your-user>/emergence-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-user>/emergence-cli/actions)
+
+---
+
+## Features (so far)
+
+| Command | What it does |
+|---------|--------------|
+| `emergence --version` | Prints the CLI version (`0.1.1`). |
+| `emergence init <name>` | Generates a ready‑to‑run **echo agent** in a new folder called `<name>/`. |
+
+Upcoming: `emergence deploy`, `emergence logs`, `emergence publish`.
+
+---
+
+## Quick Start
+
 ```bash
+# 1. Get the CLI in editable mode
+git clone https://github.com/<your-user>/emergence-cli.git
+cd emergence-cli
+python -m venv .venv && source .venv/bin/activate
 pip install -e .
+
+# 2. Check it works
 emergence --version
+# ➜ Emergence CLI, version 0.1.1
