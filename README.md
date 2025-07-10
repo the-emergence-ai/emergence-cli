@@ -2,7 +2,7 @@
 
 Command‑line companion for the **Emergence** multi‑agent network.
 
-[![CI](https://github.com/<your-user>/emergence-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-user>/emergence-cli/actions)
+[![CI](https://github.com/the-emergence-ai/emergence-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/the-emergence-ai/emergence-cli/actions)
 
 ---
 
@@ -21,7 +21,7 @@ Upcoming: `emergence deploy`, `emergence logs`, `emergence publish`.
 
 ```bash
 # 1. Get the CLI in editable mode
-git clone https://github.com/<your-user>/emergence-cli.git
+git clone https://github.com/the-emergence-ai/emergence-cli.git
 cd emergence-cli
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
