@@ -1,0 +1,2 @@
+[console_scripts]
+emergence = emergence_cli.__main__:cli
