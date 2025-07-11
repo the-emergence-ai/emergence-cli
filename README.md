@@ -1,4 +1,4 @@
-# Emergence CLI
+# Emergence CLI
 
 Command‑line companion for the **Emergence** multi‑agent network.
 
@@ -9,35 +9,31 @@ Command‑line companion for the **Emergence** multi‑agent network.
 
 ## Features (so far)
 
-| Command | What it does |
-|---------|--------------|
-| `emergence --version` | Prints the CLI version (`0.1.1`). |
-| `emergence init <name>` | Generates a ready‑to‑run **echo agent** in a new folder called `<name>/`. |
+| Command                  | What it does                                                                           |
+|--------------------------|----------------------------------------------------------------------------------------|
+| `emergence --version`    | Prints the CLI version (`0.1.1`).                                                      |
+| `emergence init <name>`  | Generates a ready‑to‑run **echo agent** in a new folder called `<name>/`.             |
 
 Upcoming: `emergence deploy`, `emergence logs`, `emergence publish`.
 
 ---
 
-## Quick Start
+## Quick Start
 
 ```bash
-# 1. Get the CLI in editable mode
+# 1. Get the CLI in editable mode
 git clone https://github.com/the-emergence-ai/emergence-cli.git
 cd emergence-cli
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
 
-# 2. Check it works
+# 2. Check it works
 emergence --version
 # ➜ Emergence CLI, version 0.1.1
 
-<p align="center">
-  <a href="https://imgur.com/OfnRPAR">
-    🎥 Watch a 60‑sec demo ↗
-  </a>
-</p>
+# 3. Scaffold a new agent
+emergence init demo-agent
 
-<p align="center">
-  <img src="https://i.imgur.com/OfnRPAR.gif" alt="Emergence CLI demo" width="700"/>
-</p>
-
+# 4. Run a test message through it
+python demo-agent/agent.py <<<'{"id":"1","from":"test","to":"demo-agent","verb":"HELP","data":{"prompt":"ping"}}'
+<p align="center"> <a href="https://imgur.com/OfnRPAR"> 🎥 Watch a 60‑sec demo ↗ </a> </p> <p align="center"> <img src="https://i.imgur.com/OfnRPAR.gif" alt="Emergence CLI demo" width="700"/> </p>
