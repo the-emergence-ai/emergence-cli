@@ -1,6 +1,6 @@
-import os, pathlib, shutil, textwrap
+import os, pathlib, shutil, textwrap, json, sys
 import click
-from importlib import resources
+import subprocess  # 👈 for docker build
 from . import __version__
 
 @click.group()
@@ -8,7 +8,6 @@ from . import __version__
 def cli():
     """Emergence command‑line tool."""
     pass
-
 
 @cli.command()
 @click.argument("name")
@@ -63,3 +62,30 @@ def init(name: str):
     (target / "README.md").write_text(readme)
 
     click.secho(f"✅  Scaffolding created in ./{name}", fg="green")
+
+
+# ─────────────────────────────────────────────────────────
+# `emergence build <path> [--tag my/image:tag]`
+# builds a Docker image for the agent folder
+# ─────────────────────────────────────────────────────────
+
+@cli.command()
+@click.argument("path", type=click.Path(exists=True, file_okay=False))
+@click.option("--tag", "-t", help="Optional image tag (default: emergence/<folder>:latest)")
+def build(path: str, tag: str | None):
+    """
+    Build a Docker image from an agent folder.
+    """
+    folder = pathlib.Path(path).resolve()
+    img_tag = tag or f"emergence/{folder.name}:latest"
+
+    click.echo(f"🔨  Building {img_tag} ...")
+    try:
+        subprocess.run(
+            ["docker", "build", "-t", img_tag, str(folder)],
+            check=True,
+        )
+        click.secho(f"✅  Image built: {img_tag}", fg="green")
+    except subprocess.CalledProcessError:
+        click.secho("⛔  Docker build failed.", fg="red")
+        raise SystemExit(1)
