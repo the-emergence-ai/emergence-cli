@@ -16,7 +16,6 @@ Command‑line companion for the **Emergence** multi‑agent network.
 
 Upcoming: `emergence deploy`, `emergence logs`, `emergence publish`.
 
----
 <p align="center"> <a href="https://imgur.com/OfnRPAR"> 🎥 Watch a 60‑sec demo ↗ </a> </p> <p align="center"> <img src="https://i.imgur.com/OfnRPAR.gif" alt="Emergence CLI demo" width="700"/> </p>
 
 ## Quick Start
