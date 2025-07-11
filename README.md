@@ -3,6 +3,7 @@
 Command‑line companion for the **Emergence** multi‑agent network.
 
 [![CI](https://github.com/the-emergence-ai/emergence-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/the-emergence-ai/emergence-cli/actions)
+![version](https://img.shields.io/badge/cli-v0.1.1-blue)
 
 ---
 
