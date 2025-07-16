@@ -1,6 +1,6 @@
 import os, pathlib, shutil, textwrap, json, sys
 import click
-import subprocess  # 👈 for docker build
+import subprocess  # 👈 for docker build & push
 from . import __version__
 
 @click.group()
@@ -89,3 +89,34 @@ def build(path: str, tag: str | None):
     except subprocess.CalledProcessError:
         click.secho("⛔  Docker build failed.", fg="red")
         raise SystemExit(1)
+
+
+# ─────────────────────────────────────────────────────────
+# `emergence publish --local --port <port> <path>`
+# pushes Docker image to local registry
+# ─────────────────────────────────────────────────────────
+
+@cli.command()
+@click.option("--local", "use_local", is_flag=True, help="Push to a registry on localhost")
+@click.option("--port", default=5000, show_default=True, help="Port of the local registry")
+@click.argument("path", type=click.Path(exists=True, file_okay=False))
+def publish(path: str, use_local: bool, port: int):
+    """
+    Publish an agent’s Docker image.
+    """
+    folder = pathlib.Path(path).resolve()
+    base_tag = f"emergence/{folder.name}:latest"
+
+    if use_local:
+        dest_tag = f"localhost:{port}/{folder.name}:latest"
+        click.echo(f"📦  Retagging {base_tag} → {dest_tag}")
+        try:
+            subprocess.run(["docker", "tag", base_tag, dest_tag], check=True)
+            click.echo(f"⬆️   Pushing → {dest_tag}")
+            subprocess.run(["docker", "push", dest_tag], check=True)
+            click.secho("✅  Pushed to local registry!", fg="green")
+        except subprocess.CalledProcessError:
+            click.secho("⛔  Push failed. Is registry running?", fg="red")
+            raise SystemExit(1)
+    else:
+        click.secho("Remote publish not implemented yet.", fg="yellow")
