@@ -11,4 +11,5 @@ src/emergence_cli.egg-info/requires.txt
 src/emergence_cli.egg-info/top_level.txt
 test/test_build.py
 test/test_init.py
+test/test_publish.py
 test/test_version.py
