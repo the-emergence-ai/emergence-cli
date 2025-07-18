@@ -1,0 +1,14 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+# Ignore agent folders (outputs, not CLI source)
+alpha/
+demo-agent/
+demo-pub/
+hello-build/
+hubtest/
+test-agent/
+# Ignore egg-info
+*.egg-info/
