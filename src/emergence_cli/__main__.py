@@ -85,7 +85,7 @@ def build(path: str, tag: str | None):
 
 @cli.command()
 @click.option("--local", "use_local", is_flag=True, help="Push to a registry on localhost")
-@click.option("--port", default=5000, show_default=True, help="Port of the local registry")
+@click.option("--port", default=5001, show_default=True, help="Port of the local registry")
 @click.argument("path", type=click.Path(exists=True, file_okay=False))
 def publish(path: str, use_local: bool, port: int):
     """
